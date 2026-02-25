@@ -560,42 +560,50 @@
             margin-top: 5px;
         }
 
-        @media (max-width: 768px) {
-  .seu-container-principal {
-    margin-top: 20px; /* Ajuste o valor conforme necessário */
-          }
-        }
+        @media (max-width: 968px) {
+    .hero h1 { font-size: 3rem; }
+    .navbar ul { gap: 20px; }
+}
 
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px 20px;
-            }
-            .navbar ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
-            .hero { padding: 30px; }
-            .hero h1 { font-size: 2.4rem; }
-            .intro h2 { font-size: 2rem; }
-            .timeline-container { flex-direction: column; }
-            .timeline-container::before { display: none; }
-            .timeline-item {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-            .timeline-item::before {
-                top: -20px;
-                left: 30px;
-                transform: none;
-            }
-            .newsletter-form { flex-direction: column; align-items: stretch; }
-            .newsletter-form button { width: 100%; }
-            .footer-grid { grid-template-columns: 1fr; }
-        }
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+    .navbar ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
+    
+    .hero { 
+        padding: 30px; 
+        /* Adiciona o espaçamento entre o cabeçalho e o container */
+        margin-top: 25px; 
+    }
+    
+    .hero h1 { font-size: 2.4rem; }
+    .intro h2 { font-size: 2rem; }
+    .timeline-container { flex-direction: column; }
+    .timeline-container::before { display: none; }
+    .timeline-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .timeline-item::before {
+        top: -20px;
+        left: 30px;
+        transform: none;
+    }
+    .newsletter-form { flex-direction: column; align-items: stretch; }
+    .newsletter-form button { width: 100%; }
+    .footer-grid { grid-template-columns: 1fr; }
+}
 
-        @media (max-width: 480px) {
-            .navbar ul { gap: 8px; font-size: 0.8rem; }
-            .hero h1 { font-size: 1.9rem; }
-        }
+@media (max-width: 480px) {
+    .navbar ul { gap: 8px; font-size: 0.8rem; }
+    .hero h1 { font-size: 1.9rem; }
+    
+    /* Garante que o espaçamento se mantenha em telas menores */
+    .hero { margin-top: 20px; }
+}
     </style>
 </head>
 <body>
