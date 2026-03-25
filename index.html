@@ -3,25 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Portfólio de desenvolvimento de software de ffariasdl. Soluções inovadoras em engenharia de software, projetos open source e desenvolvimento full-stack.">
+    <meta name="author" content="ffariasdl">
     <link rel="icon" type="image/x-icon" href="img/icon.png">
-    <title>ffariasdl.Dev - Principal</title>
+    <title>ffariasdl.Dev | Engenharia de Software & Inovação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #3B82F6;
+            --primary-dark: #2563EB;
+            --primary-light: #60A5FA;
+            --bg-dark: #05050A;
+            --bg-card: rgba(12, 12, 20, 0.85);
+            --text-light: #EDEDF2;
+            --text-muted: #9CA3AF;
+            --border-glow: rgba(59, 130, 246, 0.3);
+            --transition-smooth: cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
 
         body {
-            background: #000000;
-            color: white;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            line-height: 1.5;
+        }
+
+        /* Background Animado Melhorado */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.08) 0%, rgba(5, 5, 10, 0.98) 70%);
+            pointer-events: none;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(59,130,246,0.03) 0px, rgba(59,130,246,0.03) 1px, transparent 1px, transparent 12px),
+                repeating-linear-gradient(135deg, rgba(59,130,246,0.02) 0px, rgba(59,130,246,0.02) 2px, transparent 2px, transparent 20px);
+            pointer-events: none;
+            animation: bgDrift 30s linear infinite;
+        }
+
+        @keyframes bgDrift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
         }
 
         #binary-canvas {
@@ -31,66 +75,141 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            opacity: 0.15;
+            opacity: 0.08;
             pointer-events: none;
         }
 
+        /* Partículas Modernas */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(-20px) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.6;
+            }
+            80% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) translateX(20px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 30px 32px;
             position: relative;
             z-index: 1;
             width: 100%;
-            flex: 1;
         }
 
+        /* Navbar Moderna */
         .navbar {
             position: fixed;
-            top: 20px;
+            top: 24px;
             left: 50%;
             transform: translateX(-50%);
-            width: calc(100% - 40px);
-            max-width: 1200px;
-            background: rgba(10, 15, 30, 0.9);
-            backdrop-filter: blur(10px);
-            color: white;
+            width: calc(100% - 48px);
+            max-width: 1280px;
+            background: rgba(8, 8, 14, 0.85);
+            backdrop-filter: blur(20px);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
-            border-radius: 40px;
-            border: 1px solid rgba(0, 245, 212, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 100;
+            padding: 12px 32px;
+            border-radius: 100px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.4s var(--transition-smooth);
         }
 
-        .navbar .logo {
-            color: #00f5d4;
+        .navbar.scrolled {
+            top: 12px;
+            background: rgba(8, 8, 14, 0.98);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .logo {
             font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 2px;
+            font-weight: 800;
             cursor: pointer;
+            background: linear-gradient(135deg, #FFFFFF, var(--primary-light), var(--primary));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            transition: all 0.3s ease;
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { opacity: 1; filter: brightness(1); }
+            50% { opacity: 0.95; filter: brightness(1.1); text-shadow: 0 0 10px rgba(59,130,246,0.3); }
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
         }
 
         .navbar ul {
             list-style: none;
             display: flex;
-            gap: 40px;
+            gap: 48px;
         }
 
         .navbar ul li {
             cursor: pointer;
-            color: #a0aec0;
-            transition: color 0.3s;
-            font-size: 1rem;
-            letter-spacing: 1px;
+            color: var(--text-muted);
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .navbar ul li::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            transition: width 0.3s var(--transition-smooth);
+            border-radius: 2px;
+        }
+
+        .navbar ul li:hover::after,
+        .navbar ul li.active::after {
+            width: 100%;
         }
 
         .navbar ul li:hover,
         .navbar ul li.active {
-            color: #00f5d4;
-            font-weight: bold;
+            color: #FFFFFF;
         }
 
         .navbar ul li a {
@@ -98,732 +217,967 @@
             text-decoration: none;
         }
 
-        .profile {
-            background: #00f5d4;
-            color: #0a0f1e;
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-weight: bold;
-            border: 2px solid #00f5d4;
-            transition: all 0.3s;
+        .profile-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 8px 28px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            transition: all 0.3s var(--transition-smooth);
             cursor: pointer;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
 
-        .profile:hover {
-            background: transparent;
-            color: #00f5d4;
+        .profile-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
         }
 
         .spacer {
-            height: 100px;
+            height: 110px;
         }
 
         section {
             scroll-margin-top: 100px;
         }
 
-        .hero {
-            background: rgba(10, 15, 30, 0.7);
-            backdrop-filter: blur(5px);
-            border-radius: 30px;
-            padding: 50px;
-            color: white;
-            border: 1px solid rgba(0, 245, 212, 0.2);
-            box-shadow: 0 0 50px rgba(0, 245, 212, 0.1);
-            margin-bottom: 40px;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            color: #00f5d4;
-            text-shadow: 0 0 20px rgba(0, 245, 212, 0.5);
-            letter-spacing: 4px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-    font-size: 1.2rem;
-    color: #a0aec0;
-    /* max-width: 800px; - Remove ou comenta esta linha */
-    line-height: 1.7;
-}
-
-        .projetos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
-        }
-
-        .projeto-card {
-            background: rgba(10, 15, 30, 0.8);
-            backdrop-filter: blur(8px);
-            border-radius: 25px;
+        /* Hero Banner Otimizado - Pronto para suas imagens */
+        .hero-banner {
+            position: relative;
             overflow: hidden;
-            border: 1px solid rgba(0, 245, 212, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
+            border-radius: 48px;
+            margin-bottom: 80px;
+            cursor: pointer;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        .projeto-card:hover {
-            transform: translateY(-8px);
-            border-color: #00f5d4;
-            box-shadow: 0 0 30px rgba(0, 245, 212, 0.3);
+        .banner-slider {
+            position: relative;
+            width: 100%;
+            height: 520px;
         }
 
-        .card-image {
-            height: 200px;
+        .banner-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            border-radius: 48px;
+            overflow: hidden;
+        }
+
+        .banner-slide.active {
+            opacity: 1;
+        }
+
+        .banner-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
             background-size: cover;
             background-position: center;
-            position: relative;
-            border-bottom: 1px solid rgba(0, 245, 212, 0.2);
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 40px;
         }
 
-        .card-image::after {
+        .banner-content::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, transparent, rgba(0,245,212,0.15));
-            pointer-events: none;
+            background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(59,130,246,0.3));
+            z-index: 1;
+        }
+
+        .banner-text {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease-out;
+            max-width: 800px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .banner-text h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FFFFFF, var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .banner-text p {
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            color: #E2E8F0;
+        }
+
+        .banner-btn {
+            display: inline-block;
+            padding: 14px 36px;
+            background: linear-gradient(95deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 600;
+            transition: all 0.3s;
+            animation: subtlePulse 2s infinite;
+        }
+
+        @keyframes subtlePulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
+            }
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+            }
+        }
+
+        .banner-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+            animation: none;
+        }
+
+        .banner-dots {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            width: 28px;
+            border-radius: 5px;
+            background: var(--primary);
+        }
+
+        /* Seção de Projetos com animações */
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #FFFFFF, var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: titleGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 0 2px rgba(59,130,246,0.3)); }
+            50% { filter: drop-shadow(0 0 8px rgba(59,130,246,0.5)); }
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            font-size: 1.1rem;
+        }
+
+        .projetos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            margin: 48px 0 32px;
+        }
+
+        .projeto-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.5s var(--transition-smooth);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            animation: cardFloat 1s ease-out;
+        }
+
+        @keyframes cardFloat {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .projeto-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary);
+            box-shadow: 0 30px 50px -20px rgba(59, 130, 246, 0.4);
+            background: rgba(20, 20, 32, 0.95);
+        }
+
+        .card-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: transform 0.6s ease;
+            flex-shrink: 0;
+        }
+
+        .projeto-card:hover .card-image {
+            transform: scale(1.05);
         }
 
         .card-tag {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #00f5d4;
-            color: #0a0f1e;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: bold;
+            top: 18px;
+            right: 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 5px 16px;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
             letter-spacing: 0.5px;
             z-index: 2;
-            border: 1px solid rgba(255,255,255,0.3);
+            animation: tagPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes tagPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .card-content {
-            padding: 25px;
+            padding: 28px;
             flex: 1;
             display: flex;
             flex-direction: column;
         }
 
         .card-content h3 {
-            font-size: 1.6rem;
-            color: #00f5d4;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            transition: all 0.3s;
+        }
+
+        .projeto-card:hover .card-content h3 {
+            color: var(--primary-light);
         }
 
         .card-content p {
-            color: #a0aec0;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.5;
             flex: 1;
         }
 
-        .card-meta {
-            display: flex;
-            justify-content: space-between;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            border-top: 1px solid rgba(0,245,212,0.1);
-            padding-top: 15px;
-        }
-
-        .card-meta span i {
-            color: #00f5d4;
-            margin-right: 6px;
-            font-style: normal;
+        .btn-container {
+            margin-top: auto;
+            padding-top: 8px;
         }
 
         .btn {
-            background: #00f5d4;
-            color: #0a0f1e;
-            padding: 12px 25px;
-            border-radius: 40px;
+            background: linear-gradient(95deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 12px 28px;
+            border-radius: 100px;
             text-decoration: none;
-            font-weight: bold;
-            border: 2px solid #00f5d4;
-            transition: all 0.3s;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s var(--transition-smooth);
             cursor: pointer;
             display: inline-block;
             text-align: center;
-            margin-top: 10px;
+            font-size: 0.9rem;
+            width: 100%;
         }
 
         .btn:hover {
-            background: transparent;
-            color: #00f5d4;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
         }
 
-        .intro {
-            text-align: center;
-            margin: 30px 0 50px;
-        }
-
-        .intro h2 {
-            font-size: 2.8rem;
-            color: #00f5d4;
-            text-shadow: 0 0 15px rgba(0,245,212,0.4);
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .intro h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: #00f5d4;
-            box-shadow: 0 0 10px #00f5d4;
-            border-radius: 2px;
-        }
-
-        .intro p {
-            color: #a0aec0;
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
+        /* Timeline com animações */
         .timeline {
             margin: 80px 0;
-            position: relative;
-        }
-
-        .timeline h2 {
-            text-align: center;
-            font-size: 2.8rem;
-            color: #00f5d4;
-            text-shadow: 0 0 15px rgba(0,245,212,0.3);
-            margin-bottom: 50px;
         }
 
         .timeline-container {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: #00f5d4;
-            box-shadow: 0 0 15px #00f5d4;
-            transform: translateY(-50%);
-            z-index: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+            margin-top: 48px;
         }
 
         .timeline-item {
-            background: rgba(10, 15, 30, 0.9);
+            background: rgba(12, 12, 20, 0.8);
             backdrop-filter: blur(8px);
-            padding: 25px 20px;
-            border-radius: 20px;
-            width: calc(25% - 20px);
-            position: relative;
-            border: 1px solid rgba(0, 245, 212, 0.3);
-            box-shadow: 0 5px 25px rgba(0,0,0,0.6);
-            z-index: 2;
-            transition: transform 0.3s;
+            padding: 32px 24px;
+            border-radius: 28px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.4s;
+            text-align: center;
+            animation: timelineItem 0.6s ease-out backwards;
         }
+
+        @keyframes timelineItem {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.7s; }
 
         .timeline-item:hover {
-            transform: scale(1.02);
-            border-color: #00f5d4;
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            background: rgba(20, 20, 32, 0.95);
         }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 18px;
-            height: 18px;
-            background: #00f5d4;
-            border-radius: 50%;
-            border: 3px solid #0a0f1e;
-            box-shadow: 0 0 0 2px #00f5d4, 0 0 20px #00f5d4;
+        .timeline-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         .timeline-date {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #00f5d4;
-            margin-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
         }
 
         .timeline-title {
             font-size: 1.2rem;
-            color: white;
+            color: #FFFFFF;
             margin-bottom: 8px;
             font-weight: 600;
         }
 
-        .timeline-item p {
-            color: #a0aec0;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
+        /* Newsletter com animação */
         .newsletter {
-            background: rgba(10, 15, 30, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 60px 40px;
-            border-radius: 30px;
-            border: 1px solid rgba(0, 245, 212, 0.2);
-            box-shadow: 0 0 50px rgba(0, 245, 212, 0.1);
-            color: white;
+            background: linear-gradient(135deg, rgba(12, 12, 22, 0.95), rgba(8, 8, 16, 0.98));
+            backdrop-filter: blur(12px);
+            padding: 56px 48px;
+            border-radius: 48px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
             text-align: center;
             margin: 60px 0;
+            animation: newsletterGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes newsletterGlow {
+            0%, 100% { border-color: rgba(59, 130, 246, 0.3); box-shadow: 0 0 20px rgba(59,130,246,0.1); }
+            50% { border-color: rgba(59, 130, 246, 0.6); box-shadow: 0 0 30px rgba(59,130,246,0.2); }
         }
 
         .newsletter h3 {
-            font-size: 2.5rem;
-            color: #00f5d4;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-        }
-
-        .newsletter p {
-            color: #a0aec0;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
+            font-size: 2rem;
+            margin-bottom: 16px;
         }
 
         .newsletter-form {
             display: flex;
-            max-width: 600px;
-            margin: 0 auto;
-            gap: 15px;
+            max-width: 560px;
+            margin: 28px auto 0;
+            gap: 12px;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .newsletter-form input {
             flex: 1;
-            min-width: 250px;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 50px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(0, 245, 212, 0.3);
-            color: white;
+            min-width: 260px;
+            padding: 14px 24px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 100px;
+            background: rgba(20, 20, 30, 0.8);
+            color: var(--text-light);
+            transition: all 0.3s;
             font-size: 1rem;
-            outline: none;
-            transition: 0.3s;
         }
 
         .newsletter-form input:focus {
-            border-color: #00f5d4;
-            background: rgba(0,245,212,0.05);
-            box-shadow: 0 0 20px rgba(0,245,212,0.2);
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
         }
 
-        .newsletter-form input::placeholder {
-            color: #7f8c8d;
-        }
-
-        .newsletter-form button {
-            padding: 15px 35px;
-            border: none;
-            border-radius: 50px;
-            background: #00f5d4;
-            color: #0a0f1e;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            border: 2px solid #00f5d4;
-            transition: all 0.3s;
-        }
-
-        .newsletter-form button:hover {
-            background: transparent;
-            color: #00f5d4;
-        }
-
+        /* Footer com ícones animados */
         .footer {
-            background: rgba(10, 15, 30, 0.9);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(0, 245, 212, 0.2);
-            padding: 30px 0 20px;
+            background: rgba(5, 5, 12, 0.98);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 56px 0 32px;
             width: 100%;
-            margin-top: auto;
-            border-radius: 30px 30px 0 0;
-            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.5);
-            z-index: 2;
+            margin-top: 80px;
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 32px;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
         }
 
         .footer-section h3 {
-            color: #00f5d4;
+            color: var(--primary);
             font-size: 1.1rem;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             letter-spacing: 1px;
         }
 
-        .footer-section p,
-        .footer-section a {
-            color: #a0aec0;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            text-decoration: none;
+        .footer-section a, .footer-section p {
             display: block;
-            margin-bottom: 8px;
-            transition: color 0.3s;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: all 0.3s;
             cursor: pointer;
         }
 
         .footer-section a:hover {
-            color: #00f5d4;
+            color: var(--primary-light);
+            transform: translateX(5px);
         }
 
+        /* Estilos dos ícones sociais com animações */
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             flex-wrap: wrap;
-            margin-top: 10px;
         }
 
-        .social-links a {
-            width: 38px;
-            height: 38px;
-            background: rgba(0, 245, 212, 0.1);
+        .social-icon {
+            display: inline-flex;
+            width: 50px;
+            height: 50px;
+            background: rgba(59, 130, 246, 0.15);
             border-radius: 50%;
-            display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
-            border: 1px solid rgba(0, 245, 212, 0.2);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            animation: iconFloat 3s ease-in-out infinite;
         }
 
-        .social-links a:hover {
-            background: #00f5d4;
-            transform: translateY(-3px);
+        /* Animações individuais com delays diferentes */
+        .social-icon:nth-child(1) { animation-delay: 0s; }
+        .social-icon:nth-child(2) { animation-delay: 0.2s; }
+        .social-icon:nth-child(3) { animation-delay: 0.4s; }
+        .social-icon:nth-child(4) { animation-delay: 0.6s; }
+
+        @keyframes iconFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
         }
 
-        .social-links img {
-            width: 20px;
-            height: 20px;
-            filter: brightness(0) invert(1);
-            transition: filter 0.3s;
+        /* Efeito de rotação no hover */
+        .social-icon:hover {
+            transform: rotate(360deg) scale(1.2);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
         }
 
-        .social-links a:hover img {
-            filter: brightness(0) invert(0);
+        /* Cores específicas para cada rede social no hover */
+        .social-icon.linkedin:hover {
+            background: linear-gradient(135deg, #0077b5, #00a0dc);
+        }
+        
+        .social-icon.instagram:hover {
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+        }
+        
+        .social-icon.facebook:hover {
+            background: linear-gradient(135deg, #1877f2, #3b5998);
+        }
+        
+        .social-icon.github:hover {
+            background: linear-gradient(135deg, #6e5494, #333);
+        }
+
+        /* Efeito de onda ao passar o mouse */
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .social-icon:hover::before {
+            width: 100%;
+            height: 100%;
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0, 245, 212, 0.1);
-            color: #4a5568;
+            padding-top: 32px;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+            color: var(--text-muted);
             font-size: 0.9rem;
         }
 
-        .assinatura {
-            color: #00f5d4;
-            opacity: 0.7;
-            font-family: 'Courier New', monospace;
-            margin-top: 5px;
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            .banner-slider {
+                height: 450px;
+            }
+            .banner-text h2 {
+                font-size: 2.2rem;
+            }
+            .navbar ul {
+                gap: 24px;
+            }
+            .navbar {
+                padding: 8px 20px;
+            }
+            .logo {
+                font-size: 1.1rem;
+            }
+            .profile-btn {
+                padding: 6px 18px;
+                font-size: 0.8rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .newsletter {
+                padding: 40px 24px;
+            }
+            .social-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
         }
 
-        @media (max-width: 968px) {
-    .hero h1 { font-size: 3rem; }
-    .navbar ul { gap: 20px; }
-}
-
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 20px;
-    }
-    .navbar ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
-    
-    .hero { 
-        padding: 30px; 
-        /* Adiciona o espaçamento entre o cabeçalho e o container */
-        margin-top: 25px; 
-    }
-    
-    .hero h1 { font-size: 2.4rem; }
-    .intro h2 { font-size: 2rem; }
-    .timeline-container { flex-direction: column; }
-    .timeline-container::before { display: none; }
-    .timeline-item {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .timeline-item::before {
-        top: -20px;
-        left: 30px;
-        transform: none;
-    }
-    .newsletter-form { flex-direction: column; align-items: stretch; }
-    .newsletter-form button { width: 100%; }
-    .footer-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 480px) {
-    .navbar ul { gap: 8px; font-size: 0.8rem; }
-    .hero h1 { font-size: 1.9rem; }
-    
-    /* Garante que o espaçamento se mantenha em telas menores */
-    .hero { margin-top: 20px; }
-}
+        @media (max-width: 480px) {
+            .navbar ul {
+                display: none;
+            }
+            .navbar {
+                justify-content: space-between;
+            }
+            .social-links {
+                gap: 15px;
+            }
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="gradient-bg"></div>
+    <div class="animated-bg"></div>
     <canvas id="binary-canvas"></canvas>
+    <div class="particles" id="particles"></div>
 
-    <nav class="navbar">
-        <div class="logo" role="button" tabindex="0" onclick="scrollToSection('home')">
-            FFARIASDL.Dev
+    <nav class="navbar" id="navbar">
+        <div class="logo" onclick="scrollToSection('home')">
+            ⟨ ffariasdl.Dev ⟩
         </div>
         <ul>
-            <li id="nav-projetos" role="button" tabindex="0" onclick="scrollToSection('projetos')">Projetos</li>
-            <li id="nav-contato" role="button" tabindex="0" onclick="scrollToSection('contato-footer')">Contato</li>
-            <li>
-                <a href="wiki.html" class="profile-btn">Quem sou eu?</a>
-            </li>
+            <li id="nav-projetos" onclick="scrollToSection('projetos')">Projetos</li>
+            <li id="nav-contato" onclick="scrollToSection('contato-footer')">Contato</li>
+            <li><a href="wiki.html">Sobre mim</a></li>
         </ul>
-        <div class="profile" role="button" tabindex="0" onclick="scrollToSection('home')">
-           INICIO
-        </div>
+        <div class="profile-btn" onclick="scrollToSection('home')">Início</div>
     </nav>
 
     <div class="container">
-        <div class="spacer"></div>
+        <div class="spacer" id="home"></div>
 
-        <section id="home">
-            <div class="hero">
-                <h1>Bem Vindos!</h1>
-                <p style="text-align: justify;">
-                    O FFARIASDL.Dev é meu espaço profissional dedicado ao desenvolvimento de software, tecnologia e inovação digital. Este site representa minha identidade como desenvolvedor, reunindo projetos, experiências e soluções que transformam ideias em produtos funcionais e eficientes.
-
-Aqui você encontrará aplicações desenvolvidas com foco em performance, organização de código e experiência do usuário. Cada projeto reflete meu compromisso com qualidade, boas práticas e evolução contínua na área de tecnologia.
-
-Meu objetivo é criar soluções modernas, escaláveis e bem estruturadas, sempre buscando unir técnica, criatividade e estratégia para gerar resultados reais.
-
-Seja para colaborar, desenvolver um projeto ou compartilhar conhecimento, o FFARIASDL.Dev é o ponto de conexão entre tecnologia e propósito.
-                </p>
+        <!-- Hero Banner - Substitua "banner1.jpg", "banner2.jpg", "banner3.jpg" pelas suas imagens -->
+        <div class="hero-banner">
+            <div class="banner-slider" id="bannerSlider">
+                <div class="banner-slide active">
+                    <div class="banner-content" style="background-image: url('banner1.jpg');">
+                        <div class="banner-text">
+                            <h2>Inovação em Cada Linha de Código</h2>
+                            <p>Transformando ideias complexas em soluções digitais de alto impacto</p>
+                            <a href="#" class="banner-btn" onclick="scrollToSection('projetos')">Explorar Portfólio →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-slide">
+                    <div class="banner-content" style="background-image: url('banner2.jpg');">
+                        <div class="banner-text">
+                            <h2>Arquitetura Escalável</h2>
+                            <p>Soluções robustas para os desafios empresariais do futuro</p>
+                            <a href="#" class="banner-btn" onclick="scrollToSection('projetos')">Conheça os Projetos →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-slide">
+                    <div class="banner-content" style="background-image: url('banner3.jpg');">
+                        <div class="banner-text">
+                            <h2>Full-Stack Excellence</h2>
+                            <p>Da concepção à entrega, excelência em cada etapa do desenvolvimento</p>
+                            <a href="#" class="banner-btn" onclick="scrollToSection('projetos')">Ver Projetos →</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+            <div class="banner-dots" id="bannerDots"></div>
+        </div>
        
         <section id="projetos">
-            <div class="intro">
-                <h2>Em Desenvolvimento</h2>
-                <p>Conheça os meus próximos projetos.</p>
-            </div>
+            <h2 class="section-title">Nossos <span style="color: var(--primary);">Projetos</span></h2>
+            <p class="section-subtitle">Conheça alguns dos projetos que desenvolvi ao longo da minha carreira</p>
 
             <div class="projetos-grid">
                 <div class="projeto-card">
                     <div class="card-image" style="background-image: url('img/github.png')">
-                        <span class="card-tag">GitHub</span>
+                        <span class="card-tag">OPEN SOURCE</span>
                     </div>
                     <div class="card-content">
-                        <h3>Meus Repositórios</h3>
-                        <p>Ao clicar em saiba mais você poderá acessar os meus repositórios no perfil do GitHub.</p>
-                        <a href="https://github.com/ffariasdl?tab=repositories" class="btn" target="_blank" rel="noopener noreferrer">Saiba mais</a>
+                        <h3>Repositórios</h3>
+                        <p>Explore meu ecossistema de código aberto, bibliotecas modulares e sistemas corporativos escaláveis.</p>
+                        <div class="btn-container">
+                            <a href="https://github.com/ffariasdl?tab=repositories" class="btn" target="_blank">Explorar no GitHub →</a>
+                        </div>
                     </div>
                 </div>
                 <div class="projeto-card">
                     <div class="card-image" style="background-image: url('img/BrethanhaRPG.png')">
-                        <span class="card-tag">GAME</span>
+                        <span class="card-tag">GAME DEV</span>
                     </div>
                     <div class="card-content">
                         <h3>BrethanhaRPG</h3>
-                        <p>É um sistema de RPG de mesa nacional focado em fantasia medieval clássica</p>
-                        <a href="#" class="btn">Em Breve</a>
+                        <p>Sistema de RPG de mesa com narrativa profunda, mecânicas imersivas e universo expansivo.</p>
+                        <div class="btn-container">
+                            <a href="#" class="btn">Em desenvolvimento →</a>
+                        </div>
                     </div>
                 </div>
                 <div class="projeto-card">
                     <div class="card-image" style="background-image: url('img/atenção.png')">
-                        <span class="card-tag">Anuncie Aqui</span>
+                        <span class="card-tag">PARCEIROS</span>
                     </div>
                     <div class="card-content">
-                        <h3>Espaço Reservado</h3>
-                        <p>Anuncie Aqui</p>
-                        <a href="#" class="btn">Saiba mais</a>
+                        <h3>Designer gráfico</h3>
+                        <p>Saiba como posso ajudar a transformar sua visão em uma identidade visual impactante.</p>
+                        <div class="btn-container">
+                            <a href="#" class="btn">Saiba mais →</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        
+        <!-- Newsletter -->
+        <div class="newsletter">
+            <h3>INSCREVA-SE PARA NOVIDADES</h3>
+            <p>FAÇA O SEU ORÇAMENTO E DÊ UMA REPAGINADA</p>
+            <form id="newsletterForm" class="newsletter-form">
+                <input type="email" id="emailInput" placeholder="Seu melhor e-mail" required>
+                <button type="submit" class="btn" style="width: auto; padding: 14px 32px;">Inscrever-se →</button>
+            </form>
+        </div>
     </div>
 
     <footer class="footer" id="contato-footer">
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h3>OUTROS</h3>
+                    <h3><i class="fas fa-compass"></i> EXPLORE</h3>
                     <a onclick="scrollToSection('home')">Início</a>
-                    <a href="minigame.html" class="btn-menu">NEO ASTEROIDS</a>
-                    <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">BrethanhaRPG</a>
+                    <a href="minigame.html">NEO ASTEROIDS</a>
+                    <a href="#">BrethanhaRPG</a>
+                    <a onclick="scrollToSection('projetos')">Projetos</a>
                 </div>
                 <div class="footer-section">
-                    <h3>CONTATO</h3>
+                    <h3><i class="fas fa-envelope"></i> CONTATO</h3>
                     <p>📧 ffariasdl@gmail.com</p>
-                    <a href="https://wa.me/5522997085470">💬 (22) 99708-5470</a>
+                    <a href="https://wa.me/5522997085470" target="_blank">📱 (22) 99708-5470</a>
                     <p>📍 Iguaba-Grande, RJ</p>
                 </div>
                 <div class="footer-section">
-                    <h3>REDES SOCIAIS</h3>
+                    <h3><i class="fas fa-share-alt"></i> REDES SOCIAIS</h3>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/fabiano-farias-de-lima-3527983a3" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
+                        <a href="https://linkedin.com/in/ffariasdl" target="_blank" class="social-icon linkedin">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://www.facebook.com/share/1DpWGCA2xg/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook">
+                        <a href="https://instagram.com/ffariasdl" target="_blank" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.instagram.com/ffariasdl?igsh=bDlhNnhzdnBkZnR1" target="_blank" rel="noopener noreferrer" aria-label="Instagram Principal">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram">
+                        <a href="https://facebook.com/ffariasdl" target="_blank" class="social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.instagram.com/art_ffariasdl?igsh=bDlocGZtcm1mZzFm" target="_blank" rel="noopener noreferrer" aria-label="Instagram Art">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram Art">
+                        <a href="https://github.com/ffariasdl" target="_blank" class="social-icon github">
+                            <i class="fab fa-github"></i>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <h6>todos os direitos reservados</h6>
-                <div class="assinatura">© 2026 · ffariasdl.Dev</div>
+                <p>© 2026 ffariasdl.Dev | Engenharia de Software & Inovação</p>
+                <p style="font-size: 0.8rem; margin-top: 8px;">Transformando código em soluções que impactam</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Scroll suave
         function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const canvas = document.getElementById('binary-canvas');
-            const ctx = canvas.getContext('2d');
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+        // Newsletter handler
+        document.getElementById('newsletterForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            if(email && email.includes('@') && email.includes('.')) {
+                alert('✨ Inscrição confirmada! Você receberá conteúdos exclusivos.');
+                document.getElementById('emailInput').value = '';
+            } else {
+                alert('📧 Por favor, insira um e-mail válido.');
             }
-            resizeCanvas();
+        });
 
-            const binary = ['0', '1'];
-            const fontSize = 14;
-            let columns = Math.floor(canvas.width / fontSize);
-            let drops = [];
-            let speeds = [];
-
-            function initDrops() {
-                drops = [];
-                speeds = [];
-                for (let i = 0; i < columns; i++) {
-                    drops[i] = Math.floor(Math.random() * -canvas.height / fontSize);
-                    speeds[i] = 0.5 + Math.random() * 1.5;
+        // Banner Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const dotsContainer = document.getElementById('bannerDots');
+        
+        function createDots() {
+            if(!dotsContainer) return;
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if(index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+        }
+        
+        function goToSlide(index) {
+            slides[currentSlide]?.classList.remove('active');
+            const dots = document.querySelectorAll('.dot');
+            dots[currentSlide]?.classList.remove('active');
+            currentSlide = index;
+            slides[currentSlide]?.classList.add('active');
+            dots[currentSlide]?.classList.add('active');
+        }
+        
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            goToSlide(next);
+        }
+        
+        createDots();
+        if(slides.length > 0) setInterval(nextSlide, 5000);
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if(window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Binary rain effect otimizado
+        const canvas = document.getElementById('binary-canvas');
+        if(canvas) {
+            const ctx = canvas.getContext('2d');
+            let width, height, columns, drops, speeds;
+            
+            function resizeCanvas() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+                columns = Math.floor(width / 14);
+                drops = new Array(columns);
+                speeds = new Array(columns);
+                for(let i = 0; i < columns; i++) {
+                    drops[i] = Math.floor(Math.random() * -height / 14);
+                    speeds[i] = 0.4 + Math.random() * 1;
                 }
             }
-            initDrops();
-
+            
             function drawBinaryRain() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = '#00f5d4';
-                ctx.font = fontSize + 'px "Courier New", monospace';
-
-                for (let i = 0; i < drops.length; i++) {
-                    const char = binary[Math.floor(Math.random() * binary.length)];
-                    const x = i * fontSize;
-                    const y = drops[i] * fontSize;
+                ctx.fillStyle = 'rgba(5, 5, 10, 0.05)';
+                ctx.fillRect(0, 0, width, height);
+                ctx.fillStyle = '#3B82F6';
+                ctx.font = '12px "Fira Code", monospace';
+                
+                for(let i = 0; i < drops.length; i++) {
+                    const char = Math.random() > 0.5 ? '1' : '0';
+                    const x = i * 14;
+                    const y = drops[i] * 14;
+                    ctx.globalAlpha = 0.3 + Math.random() * 0.3;
                     ctx.fillText(char, x, y);
-                    if (y > canvas.height && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    }
+                    if(y > height && Math.random() > 0.98) drops[i] = 0;
                     drops[i] += speeds[i];
                 }
                 requestAnimationFrame(drawBinaryRain);
             }
+            
+            resizeCanvas();
             drawBinaryRain();
-
+            
             window.addEventListener('resize', () => {
                 resizeCanvas();
-                columns = Math.floor(canvas.width / fontSize);
-                initDrops();
             });
-
-            function updateActiveMenuItem() {
-                const sections = [
-                    { id: 'home', navId: 'nav-home' },
-                    { id: 'projetos', navId: 'nav-projetos' },
-                    { id: 'contato-footer', navId: 'nav-contato' }
-                ];
-                
-                let currentNavId = 'nav-home';
-                
-                for (let s of sections) {
-                    const el = document.getElementById(s.id);
-                    if (el) {
-                        const rect = el.getBoundingClientRect();
-                        if (rect.top <= 150 && rect.bottom >= 100) {
-                            currentNavId = s.navId;
-                            break;
-                        }
+        }
+        
+        // Floating particles melhorado
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            if(!particlesContainer) return;
+            for(let i = 0; i < 80; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 4 + 1;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = Math.random() * 12 + 6 + 's';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        createParticles();
+        
+        // Active menu item
+        function updateActiveMenuItem() {
+            const sections = [
+                { id: 'home', navId: 'nav-projetos' },
+                { id: 'projetos', navId: 'nav-projetos' },
+                { id: 'contato-footer', navId: 'nav-contato' }
+            ];
+            let current = null;
+            
+            for(let s of sections) {
+                const el = document.getElementById(s.id);
+                if(el) {
+                    const rect = el.getBoundingClientRect();
+                    if(rect.top <= 150 && rect.bottom >= 100) {
+                        current = s.navId;
+                        break;
                     }
                 }
-
-                document.querySelectorAll('.navbar ul li').forEach(item => {
-                    item.classList.remove('active');
-                });
-
-                const activeItem = document.getElementById(currentNavId);
-                if (activeItem) {
-                    activeItem.classList.add('active');
-                }
             }
-
-            window.addEventListener('scroll', updateActiveMenuItem);
-            updateActiveMenuItem();
-
-            const observer = new IntersectionObserver(() => {
-                updateActiveMenuItem();
-            }, { threshold: 0.3, rootMargin: '-100px 0px 0px 0px' });
             
-            document.querySelectorAll('section, #contato-footer').forEach(el => {
-                observer.observe(el);
+            document.querySelectorAll('.navbar ul li').forEach(item => {
+                item.classList.remove('active');
             });
+            if(current) {
+                const activeItem = document.getElementById(current);
+                if(activeItem) activeItem.classList.add('active');
+            }
+        }
+        
+        window.addEventListener('scroll', updateActiveMenuItem);
+        updateActiveMenuItem();
+
+        // Adicionar animação de entrada para os cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.projeto-card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
         });
     </script>
 </body>
