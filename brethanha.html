@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="BrethanhaRPG - Loja oficial de itens, manuais e acessórios para sua campanha dark fantasy. Miniaturas, dados e cenários exclusivos.">
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <title>BrethanhaRPG - Loja Oficial | Itens, Manuais & Acessórios</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Medieval + Moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=MedievalSharp&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050208;
+            color: #e8e2d4;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .font-medieval {
+            font-family: 'MedievalSharp', cursive;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header / Navbar - estilo premium D&D */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid rgba(200, 120, 60, 0.4);
+            backdrop-filter: blur(2px);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 58px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.6)) brightness(1.05);
+            transition: transform 0.3s ease, filter 0.2s;
+        }
+        
+        .logo-img:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 6px 15px rgba(200, 100, 40, 0.5));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #e8e2d4;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-links a:hover {
+            color: #e09d4a;
+        }
+
+        .btn-outline {
+            border: 1px solid #c06730;
+            padding: 8px 22px;
+            border-radius: 40px;
+            background: transparent;
+            color: #e09d4a;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: #c06730;
+            color: #050208;
+            transform: scale(1.05);
+            box-shadow: 0 0 12px rgba(192, 103, 48, 0.4);
+        }
+
+        .btn-primary {
+            background: #c06730;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            color: #0f0b0a;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover {
+            background: #a54e22;
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(192, 103, 48, 0.6);
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .cart-icon:hover {
+            transform: scale(1.1);
+            color: #e09d4a;
+        }
+
+        /* HERO SECTION - com logo2 como BACKGROUND com opacidade 30% */
+        .hero {
+            position: relative;
+            padding: 60px 0 90px 0;
+            overflow: hidden;
+            background: #0a0308;
+            border-bottom: 2px solid rgba(192, 103, 48, 0.3);
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('img/logo2.png');
+            background-repeat: no-repeat;
+            background-position: center 40%;
+            background-size: 45% auto;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 30% 45%, rgba(10, 3, 8, 0.65) 0%, #020004 90%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 5;
+        }
+        
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1.2;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(192, 103, 48, 0.25);
+            backdrop-filter: blur(5px);
+            padding: 8px 20px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            border-left: 3px solid #e09d4a;
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.6);
+            font-family: 'MedievalSharp', cursive;
+        }
+
+        .hero-highlight {
+            color: #e6a75a;
+            text-shadow: 0 0 10px rgba(230, 167, 90, 0.4);
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: #cfc5b4;
+            margin-bottom: 32px;
+            max-width: 550px;
+            line-height: 1.6;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 28px;
+            margin-top: 28px;
+            border-top: 1px solid rgba(200, 120, 60, 0.3);
+            padding-top: 24px;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #cbbfa8;
+        }
+        
+        .stat-item i {
+            color: #e09d4a;
+            font-size: 1.2rem;
+        }
+        
+        .hero-image-area {
+            flex: 0.9;
+            text-align: center;
+            background: rgba(0,0,0,0.4);
+            border-radius: 48px;
+            padding: 25px 20px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(192, 103, 48, 0.4);
+            transition: all 0.4s;
+        }
+        
+        .hero-image-area:hover {
+            border-color: rgba(224, 157, 74, 0.7);
+            box-shadow: 0 0 25px rgba(192, 103, 48, 0.2);
+        }
+        
+        .hero-symbol {
+            font-size: 4rem;
+            color: #e09d4a;
+            filter: drop-shadow(0 0 8px #c06730);
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%,100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* Banner animado */
+        .banner-carousel {
+            margin: 50px 0 40px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -8px rgba(0,0,0,0.7);
+        }
+        
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 360px;
+        }
+        
+        .carousel-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.1s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 32px;
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        
+        .carousel-content {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.75);
+            padding: 32px 52px;
+            border-radius: 32px;
+            backdrop-filter: blur(12px);
+            max-width: 80%;
+            border: 1px solid rgba(224, 157, 74, 0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+        
+        .carousel-content h3 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            color: #e6a75a;
+            font-family: 'MedievalSharp', cursive;
+        }
+        
+        .carousel-dots {
+            position: absolute;
+            bottom: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 14px;
+            z-index: 15;
+        }
+        
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(230, 200, 160, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .dot.active {
+            background: #e09d4a;
+            width: 30px;
+            border-radius: 12px;
+        }
+
+        /* Categorias */
+        .categories {
+            margin: 30px 0 40px;
+        }
+
+        .cat-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .cat-item {
+            background: #100b0e;
+            border-radius: 60px;
+            padding: 10px 32px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid #3f2c22;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(2px);
+        }
+        
+        .cat-item i {
+            color: #e09d4a;
+            font-size: 1.2rem;
+        }
+
+        .cat-item:hover {
+            border-color: #c06730;
+            background: #1f1613;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Produtos Grid */
+        .section-title {
+            font-size: 2rem;
+            margin: 48px 0 16px 0;
+            border-left: 5px solid #c06730;
+            padding-left: 24px;
+            font-family: 'MedievalSharp', cursive;
+        }
+
+        .section-sub {
+            color: #b9aa97;
+            margin-bottom: 40px;
+            padding-left: 28px;
+            font-weight: 300;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 32px;
+            margin-bottom: 64px;
+        }
+
+        .product-card {
+            background: #0f0b0e;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid #2c211c;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 35px -12px rgba(192, 103, 48, 0.45);
+            border-color: #c06730;
+        }
+
+        .product-img {
+            height: 210px;
+            background: radial-gradient(ellipse at 30% 40%, #2f211b, #0a0608);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            color: #d47a42;
+            transition: all 0.4s;
+        }
+        
+        .product-card:hover .product-img {
+            transform: scale(1.03);
+            color: #e79454;
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: #c06730;
+            color: #050208;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 4px 14px;
+            border-radius: 30px;
+        }
+
+        .product-content {
+            padding: 22px;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .product-brand {
+            font-size: 0.75rem;
+            color: #d47a42;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .price {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #f0bc7a;
+            margin: 16px 0;
+        }
+
+        .old-price {
+            font-size: 0.85rem;
+            text-decoration: line-through;
+            color: #9b8876;
+            margin-right: 8px;
+        }
+
+        .btn-buy {
+            width: 100%;
+            background: #1f1815;
+            border: 1px solid #c06730;
+            color: #f0bc7a;
+            padding: 12px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-buy:hover {
+            background: #c06730;
+            color: #0a0508;
+            transform: scale(1.02);
+        }
+
+        /* Destaque Escudo do Mestre */
+        .featured {
+            background: linear-gradient(125deg, #0e080c, #1e1310);
+            border-radius: 40px;
+            margin: 40px 0 60px;
+            padding: 48px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 35px;
+            align-items: center;
+            border: 1px solid rgba(192, 103, 48, 0.55);
+            transition: all 0.4s;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+        
+        .featured:hover {
+            transform: scale(1.01);
+            box-shadow: 0 20px 40px rgba(192, 103, 48, 0.3);
+            border-color: #e09d4a;
+        }
+
+        .featured-info {
+            flex: 2;
+        }
+
+        .featured-img {
+            flex: 1;
+            text-align: center;
+            font-size: 5rem;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px #c06730);
+        }
+
+        /* ========== RODAPÉ INSPIRADO NO DUNGEONS & DRAGONS ========== */
+        .footer-premium {
+            background: linear-gradient(180deg, #07030a 0%, #010001 100%);
+            border-top: 1px solid rgba(192, 103, 48, 0.35);
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-premium::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" opacity="0.08"><path d="M0,100 L1200,0 L1200,200 L0,200 Z" fill="%23c06730"/><circle cx="200" cy="150" r="30" fill="%23b85a2a"/><path d="M900,50 L1100,70 L1050,150 L850,130 Z" fill="%239a4a22"/></svg>') repeat-x;
+            background-position: bottom;
+            pointer-events: none;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 48px;
+            padding: 64px 0 48px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-col h3 {
+            font-family: 'MedievalSharp', cursive;
+            font-size: 1.2rem;
+            color: #e09d4a;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            border-left: 3px solid #c06730;
+            padding-left: 12px;
+        }
+        
+        .footer-col p {
+            color: #bcae9a;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #bcae9a;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-links a i {
+            font-size: 0.75rem;
+            color: #c06730;
+            transition: transform 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: #e09d4a;
+            transform: translateX(4px);
+        }
+        
+        .footer-links a:hover i {
+            transform: translateX(3px);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            width: 38px;
+            height: 38px;
+            background: #1e1613;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #bcae9a;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 1px solid #3a2a22;
+        }
+        
+        .social-icons a:hover {
+            background: #c06730;
+            color: #050208;
+            transform: translateY(-4px);
+            border-color: #e09d4a;
+        }
+        
+        .newsletter-mini {
+            display: flex;
+            margin: 20px 0;
+            border-bottom: 1px solid #3a2a22;
+        }
+        
+        .newsletter-mini input {
+            background: transparent;
+            border: none;
+            padding: 10px 0;
+            flex: 1;
+            color: #e8e2d4;
+            outline: none;
+            font-size: 0.85rem;
+        }
+        
+        .newsletter-mini button {
+            background: none;
+            border: none;
+            color: #e09d4a;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        
+        .newsletter-mini button:hover {
+            color: #fff;
+            transform: translateX(3px);
+        }
+        
+        .badge-guild {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(192, 103, 48, 0.15);
+            padding: 12px 16px;
+            border-radius: 50px;
+            margin-top: 16px;
+            font-size: 0.8rem;
+            border: 1px dashed rgba(192, 103, 48, 0.4);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(192, 103, 48, 0.25);
+            padding: 28px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            font-size: 0.8rem;
+            color: #7a6a5a;
+        }
+        
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-bottom-links a {
+            color: #7a6a5a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .footer-bottom-links a:hover {
+            color: #e09d4a;
+        }
+        
+        .copyright i {
+            color: #c06730;
+            margin-right: 6px;
+        }
+        
+        .edition-scroll {
+            font-family: 'MedievalSharp', cursive;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            opacity: 0.7;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(35px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-55px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2rem; }
+            .hero::before { background-size: 70% auto; }
+            .carousel-container { height: 280px; }
+            .carousel-content h3 { font-size: 1.3rem; }
+            .carousel-content { padding: 20px 28px; }
+            .featured { padding: 28px; flex-direction: column; text-align: center; }
+            .footer-grid { gap: 32px; padding: 40px 0 30px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-bottom-links { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo-container">
+                <img src="img/logo.png" alt="BrethanhaRPG Logo" class="logo-img" onerror="this.src='https://placehold.co/200x60/1f1715/e09d4a?text=BrethanhaRPG'">
+            </div>
+            <div class="nav-links">
+                <a href="#">Loja</a>
+                <a href="#">Catálogo</a>
+                <a href="#">O Mundo</a>
+                <a href="#">Suporte</a>
+                <a href="#" class="cart-icon"><i class="fas fa-shopping-cart"></i> <span style="font-size:0.7rem;">(0)</span></a>
+                <a href="#" class="btn-outline">Minha Conta</a>
+                <a href="#" class="btn-primary">Entrar</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero com logo2 background -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="hero-badge font-medieval"><i class="fas fa-dragon"></i> Universo Oficial Brethanha</span>
+                <h1>Forje sua lenda com os <span class="hero-highlight">artefatos ancestrais</span></h1>
+                <p class="hero-desc">Miniaturas esculpidas em resina negra, dados amaldiçoados, grids de batalha imersivos e o lendário Escudo do Mestre. Inspirado nos grandes épicos de fantasia medieval.</p>
+                <button class="btn-primary" id="exploreBtn"><i class="fas fa-gem"></i> Explorar coleção lendária</button>
+                <div class="hero-stats">
+                    <div class="stat-item"><i class="fas fa-truck-fast"></i> Envio para todo Brasil</div>
+                    <div class="stat-item"><i class="fas fa-shield-alt"></i> Produtos licenciados</div>
+                    <div class="stat-item"><i class="fas fa-medal"></i> Garantia Brethanha</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Banners animados -->
+        <div class="banner-carousel" data-aos="fade-up">
+            <div class="carousel-container" id="carousel">
+                <div class="carousel-slide active" style="background-image: linear-gradient(125deg, rgba(0,0,0,0.7), rgba(30,10,8,0.8)), url('https://images.unsplash.com/photo-1608889476561-6242cfdbf622?w=1400&h=450&fit=crop');">
+                    <div class="carousel-content">
+                        <h3><i class="fas fa-dragon"></i> Bestiário das Profundezas</h3>
+                        <p>Miniaturas exclusivas das criaturas ancestrais — edição limitada com mapa incluso</p>
+                        <button class="btn-primary banner-cta">Desvendar coleção</button>
+                    </div>
+                </div>
+                <div class="carousel-slide" style="background-image: linear-gradient(125deg, rgba(0,0,0,0.7), rgba(20,8,5,0.8)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1400&h=450&fit=crop');">
+                    <div class="carousel-content">
+                        <h3><i class="fas fa-crown"></i> Reinado Sombrio</h3>
+                        <p>Frete Grátis Sul e Sudeste + Mapa do Continente Maldito. Por tempo limitado.</p>
+                        <button class="btn-primary banner-cta">Resgatar benefício</button>
+                    </div>
+                </div>
+                <div class="carousel-slide" style="background-image: linear-gradient(125deg, rgba(0,0,0,0.75), rgba(45,18,12,0.85)), url('https://images.unsplash.com/photo-1614294148960-9aa740632a87?w=1400&h=450&fit=crop');">
+                    <div class="carousel-content">
+                        <h3><i class="fas fa-shield-alt"></i> Escudo do Mestre Relíquia</h3>
+                        <p>Arte em couro gravado, tabelas de tormento e facções ocultas. Últimas unidades.</p>
+                        <button class="btn-primary banner-cta">Garantir agora</button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+
+        <!-- Categorias -->
+        <div class="categories">
+            <div class="cat-grid">
+                <div class="cat-item"><i class="fas fa-dice-d20"></i> Dados Rúnicos</div>
+                <div class="cat-item"><i class="fas fa-chess-board"></i> Grids & Ruínas</div>
+                <div class="cat-item"><i class="fas fa-user-ninja"></i> Miniaturas Épicas</div>
+                <div class="cat-item"><i class="fas fa-book"></i> Tomos Físicos</div>
+                <div class="cat-item"><i class="fas fa-tablet-alt"></i> Grimórios Digitais</div>
+                <div class="cat-item"><i class="fas fa-shield-alt"></i> Escudo do Mestre</div>
+            </div>
+        </div>
+
+        <!-- Destaque Escudo -->
+        <div class="featured" data-aos="fade-up">
+            <div class="featured-img">
+                <i class="fas fa-shield-halbed"></i>
+            </div>
+            <div class="featured-info">
+                <span class="hero-badge" style="background:#2f1914;">Relíquia Lendária</span>
+                <h2 style="font-size: 1.9rem;">Escudo do Mestre de Brethanha</h2>
+                <p>Couro escuro, arte sacra do grimório de Vaelkor, tabelas de tormento e facções ocultas. O aliado definitivo para mestres que exigem imersão total.</p>
+                <div class="price" style="margin: 16px 0;">R$ 189,90 <span class="old-price">R$ 249,90</span></div>
+                <button class="btn-primary" id="shieldAddBtn">Adicionar ao arsenal</button>
+            </div>
+        </div>
+
+        <h2 class="section-title">⚔️ Artefatos das Terras Proibidas</h2>
+        <p class="section-sub">Itens oficiais e certificados pela guilda Brethanha</p>
+        <div class="products-grid">
+            <div class="product-card"><div class="product-img"><i class="fas fa-dice-d6"></i></div><div class="product-content"><div class="product-title">Dados de Ferro Negro</div><div class="product-brand">BrethanhaRPG</div><div class="price">R$ 79,90</div><button class="btn-buy">Comprar</button></div></div>
+            <div class="product-card"><div class="product-img"><i class="fas fa-helmet-battle"></i></div><div class="product-content"><div class="product-title">Miniatura Cavaleiro Sombrio</div><div class="product-brand">DarkForge</div><div class="price">R$ 54,90</div><button class="btn-buy">Comprar</button></div></div>
+            <div class="product-card"><div class="product-img"><i class="fas fa-border-all"></i></div><div class="product-content"><div class="product-title">Grid Tático - Terrenos Malditos</div><div class="product-brand">Arcane Grids</div><div class="price">R$ 119,90</div><button class="btn-buy">Comprar</button></div></div>
+            <div class="product-card"><div class="product-img"><i class="fas fa-book-dead"></i></div><div class="product-content"><div class="product-title">Manual do Aventureiro (Físico)</div><div class="product-brand">BrethanhaRPG</div><div class="price">R$ 149,90</div><button class="btn-buy">Comprar</button></div></div>
+            <div class="product-card"><div class="product-img"><i class="fas fa-tablet-alt"></i></div><div class="product-content"><div class="product-title">Compêndio das Sombras (PDF)</div><div class="product-brand">Digital</div><div class="price">R$ 39,90</div><button class="btn-buy">Comprar</button></div></div>
+            <div class="product-card"><div class="product-img"><i class="fas fa-shield-virus"></i></div><div class="product-content"><div class="product-title">Escudo do Mestre (Pocket)</div><div class="product-brand">Brethanha</div><div class="price">R$ 89,90 <span class="old-price">R$ 119</span></div><button class="btn-buy">Comprar</button></div></div>
+        </div>
+
+        <div style="background: #0e080c; border-radius: 32px; padding: 48px 32px; text-align: center; margin: 48px 0; border: 1px solid #c0673040;" data-aos="fade-up">
+            <h2 class="font-medieval" style="font-size: 1.8rem;">Junte-se à Irmandade de Brethanha</h2>
+            <p style="max-width: 500px; margin: 16px auto;">Receba ofertas exclusivas, prévias de miniaturas e conteúdo gratuito do cenário sombrio.</p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+                <input type="email" id="newsEmail" placeholder="Seu e-mail do reino" style="padding: 14px 20px; border-radius: 60px; border: none; width: 280px; background:#2a211e; color:#ece8e0;">
+                <button class="btn-primary" id="newsBtn">Assinar & Obter 10% off</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- RODAPÉ INSPIRADO NO DUNGEONS & DRAGONS - premium e interativo -->
+<footer class="footer-premium">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3><i class="fas fa-dice-d20"></i> A GUILDA</h3>
+                <p>Brethanha RPG é um universo de fantasia sombria onde heróis forjam seu destino. Explore masmorras, derrote criaturas ancestrais e colecione artefatos lendários.</p>
+                <div class="badge-guild">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Filiado à Sociedade dos Mestres | Selo Oficial #BRT24</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>EXPLORAR</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Código do Aventureiro</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Regras da Corte</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Biblioteca dos Reinos</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Mapa Interativo</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Fórum da Guilda</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>COMUNIDADE</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fab fa-discord"></i> Masmorra do Discord</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Grimório no Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> Canal do Mestre</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-alt"></i> Eventos & Campanhas</a></li>
+                    <li><a href="#"><i class="fas fa-trophy"></i> Hall da Fama</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>NEWSLETTER ÉPICA</h3>
+                <p>Receba pergaminhos com ofertas sombrias e conteúdos exclusivos.</p>
+                <div class="newsletter-mini">
+                    <input type="email" id="footerEmail" placeholder="seu e-mail do reino">
+                    <button id="footerNewsBtn"><i class="fas fa-envelope"></i> Assinar</button>
+                </div>
+                <div class="social-icons">
+                    <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitch"><i class="fab fa-twitch"></i></a>
+                    <a href="#" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                <i class="fas fa-skull"></i> BrethanhaRPG — onde o heroísmo encontra a penumbra.
+            </div>
+            <div class="footer-bottom-links">
+                <a href="#">Termos do Reino</a>
+                <a href="#">Política de Sigilo</a>
+                <a href="#">Licenciamento</a>
+                <a href="#">Suporte Arcano</a>
+            </div>
+            <div class="edition-scroll">
+                <i class="fas fa-scroll"></i> Edição Sombria MMXXV
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 700, once: false, offset: 100, easing: 'ease-out' });
+
+    // Carrossel
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dotsContainer = document.getElementById('carouselDots');
+    slides.forEach((_, idx) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if(idx === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(idx));
+        dotsContainer.appendChild(dot);
+    });
+    function goToSlide(index) {
+        slides.forEach(s => s.classList.remove('active'));
+        slides[index].classList.add('active');
+        document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === index));
+        currentSlide = index;
+    }
+    function nextSlide() { goToSlide((currentSlide + 1) % slides.length); }
+    let autoPlay = setInterval(nextSlide, 5400);
+    const carouselDiv = document.getElementById('carousel');
+    carouselDiv.addEventListener('mouseenter', () => clearInterval(autoPlay));
+    carouselDiv.addEventListener('mouseleave', () => { autoPlay = setInterval(nextSlide, 5400); });
+    
+    // Carrinho
+    let cartCount = 0;
+    const cartSpan = document.querySelector('.cart-icon span');
+    function addToCart() {
+        cartCount++;
+        if(cartSpan) cartSpan.innerText = `(${cartCount})`;
+        const toast = document.createElement('div');
+        toast.textContent = '✓ Item adicionado ao baú do herói';
+        toast.style.cssText = 'position:fixed; bottom:20px; right:20px; background:#c06730; color:#fff; padding:12px 24px; border-radius:40px; z-index:9999; font-weight:bold; animation:fadeInUp 0.3s;';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2000);
+    }
+    document.querySelectorAll('.btn-buy').forEach(btn => btn.addEventListener('click', addToCart));
+    document.getElementById('shieldAddBtn')?.addEventListener('click', addToCart);
+    document.querySelectorAll('.banner-cta').forEach(btn => btn.addEventListener('click', () => alert("✨ Oferta especial Brethanha: benefício adicionado à sua jornada!")));
+    document.getElementById('exploreBtn')?.addEventListener('click', () => document.querySelector('.products-grid')?.scrollIntoView({ behavior: 'smooth' }));
+    
+    // Newsletter principal
+    document.getElementById('newsBtn')?.addEventListener('click', () => {
+        const email = document.getElementById('newsEmail');
+        if(email.value.trim()) { alert(`🧙‍♂️ ${email.value} registrado! Cupom BRETHANHA10 liberado.`); email.value = ''; }
+        else alert("Insira seu e-mail para receber o código das terras sombrias.");
+    });
+    
+    // Newsletter rodapé
+    document.getElementById('footerNewsBtn')?.addEventListener('click', () => {
+        const emailFooter = document.getElementById('footerEmail');
+        if(emailFooter.value.trim()) { alert(`⚔️ ${emailFooter.value} agora faz parte da Irmandade! Em breve, novidades.`); emailFooter.value = ''; }
+        else alert("Digite um e-mail válido para receber os pergaminhos.");
+    });
+    
+    document.querySelectorAll('.cat-item').forEach(c => c.addEventListener('click', () => alert(`🔮 Explorando: ${c.textContent.trim()} — em breve novos artefatos`)));
+</script>
+</body>
+</html>
