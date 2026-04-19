@@ -609,7 +609,7 @@
             font-weight: 600;
         }
 
-        /* Newsletter com animação */
+        /* Newsletter com animação - FORMULÁRIO COMPLETO */
         .newsletter {
             background: linear-gradient(135deg, rgba(12, 12, 22, 0.95), rgba(8, 8, 16, 0.98));
             backdrop-filter: blur(12px);
@@ -633,29 +633,43 @@
 
         .newsletter-form {
             display: flex;
+            flex-direction: column;
             max-width: 560px;
             margin: 28px auto 0;
-            gap: 12px;
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: 16px;
         }
 
-        .newsletter-form input {
-            flex: 1;
-            min-width: 260px;
+        .form-group {
+            width: 100%;
+        }
+
+        .newsletter-form input,
+        .newsletter-form textarea {
+            width: 100%;
             padding: 14px 24px;
             border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 100px;
+            border-radius: 16px;
             background: rgba(20, 20, 30, 0.8);
             color: var(--text-light);
             transition: all 0.3s;
             font-size: 1rem;
+            font-family: inherit;
         }
 
-        .newsletter-form input:focus {
+        .newsletter-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .newsletter-form input:focus,
+        .newsletter-form textarea:focus {
             border-color: var(--primary);
             outline: none;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        .newsletter-form button {
+            margin-top: 8px;
         }
 
         /* Footer com ícones animados */
@@ -726,11 +740,11 @@
             animation: iconFloat 3s ease-in-out infinite;
         }
 
-        /* Animações individuais com delays diferentes */
         .social-icon:nth-child(1) { animation-delay: 0s; }
         .social-icon:nth-child(2) { animation-delay: 0.2s; }
         .social-icon:nth-child(3) { animation-delay: 0.4s; }
         .social-icon:nth-child(4) { animation-delay: 0.6s; }
+        .social-icon:nth-child(5) { animation-delay: 0.8s; }
 
         @keyframes iconFloat {
             0%, 100% {
@@ -741,7 +755,6 @@
             }
         }
 
-        /* Efeito de rotação no hover */
         .social-icon:hover {
             transform: rotate(360deg) scale(1.2);
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -749,7 +762,6 @@
             box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
         }
 
-        /* Cores específicas para cada rede social no hover */
         .social-icon.linkedin:hover {
             background: linear-gradient(135deg, #0077b5, #00a0dc);
         }
@@ -766,7 +778,6 @@
             background: linear-gradient(135deg, #6e5494, #333);
         }
 
-        /* Efeito de onda ao passar o mouse */
         .social-icon::before {
             content: '';
             position: absolute;
@@ -791,6 +802,26 @@
             border-top: 1px solid rgba(59, 130, 246, 0.1);
             color: var(--text-muted);
             font-size: 0.9rem;
+        }
+
+        /* Toast de notificação */
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 16px 24px;
+            border-radius: 16px;
+            font-weight: 500;
+            z-index: 9999;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .toast-notification.show {
+            transform: translateX(0);
         }
 
         @media (max-width: 768px) {
@@ -826,6 +857,11 @@
                 width: 45px;
                 height: 45px;
                 font-size: 1.3rem;
+            }
+            .toast-notification {
+                left: 20px;
+                right: 20px;
+                text-align: center;
             }
         }
 
@@ -868,7 +904,7 @@
     <div class="container">
         <div class="spacer" id="home"></div>
 
-        <!-- Hero Banner - Substitua "banner1.jpg", "banner2.jpg", "banner3.jpg" pelas suas imagens -->
+        <!-- Hero Banner -->
         <div class="hero-banner">
             <div class="banner-slider" id="bannerSlider">
                 <div class="banner-slide active">
@@ -925,10 +961,9 @@
                     </div>
                     <div class="card-content">
                         <h3>BrethanhaRPG</h3>
-                        <p>BrethanhaRPG é como um jogo de tabuleiro sem tabuleiro fixo, onde cada jogador controla um personagem e, em vez de peças e casas, as ações acontecem pela interpretação e decisões do grupo.
-</p>
+                        <p>BrethanhaRPG é como um jogo de tabuleiro sem tabuleiro fixo, onde cada jogador controla um personagem e, em vez de peças e casas, as ações acontecem pela interpretação e decisões do grupo.</p>
                         <div class="btn-container">
-                            <a href="#" class="btn">Em desenvolvimento →</a>
+                            <a href="brethanha.html" class="btn" target="_blank">Em desenvolvimento →</a>
                         </div>
                     </div>
                 </div>
@@ -947,14 +982,30 @@
             </div>
         </section>
 
-        
-        <!-- Newsletter -->
+        <!-- Formulário de Contato Completo -->
         <div class="newsletter">
-            <h3>INSCREVA-SE PARA NOVIDADES</h3>
-            <p>FAÇA O SEU ORÇAMENTO E DÊ UMA REPAGINADA</p>
-            <form id="newsletterForm" class="newsletter-form">
-                <input type="email" id="emailInput" placeholder="Seu melhor e-mail" required>
-                <button type="submit" class="btn" style="width: auto; padding: 14px 32px;">Inscrever-se →</button>
+            <h3>📬 FALE CONOSCO</h3>
+            <p>Preencha o formulário abaixo e entraremos em contato em breve!</p>
+            <form id="contactForm" class="newsletter-form" action="https://formsubmit.co/ffariasdl@gmail.com" method="POST">
+                <!-- Campos ocultos para configurar o FormSubmit -->
+                <input type="hidden" name="_subject" value="📩 Novo Contato do Portfólio!">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://ffariasdl.github.io/portfolio/obrigado.html">
+                
+                <div class="form-group">
+                    <input type="text" name="nome" id="nomeInput" placeholder="Seu nome completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" id="emailInput" placeholder="Seu melhor e-mail" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="endereco" id="enderecoInput" placeholder="Seu endereço (cidade/estado ou completo)">
+                </div>
+                <div class="form-group">
+                    <textarea name="mensagem" id="mensagemInput" placeholder="Digite sua mensagem ou orçamento aqui..." required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; padding: 14px 32px;">Enviar Mensagem →</button>
             </form>
         </div>
     </div>
@@ -978,7 +1029,7 @@
                 <div class="footer-section">
                     <h3><i class="fas fa-share-alt"></i> REDES SOCIAIS</h3>
                     <div class="social-links">
-                        <a href="linkedin.com/in/fabiano-farias-de-lima-3527983a3" target="_blank" class="social-icon linkedin">
+                        <a href="https://linkedin.com/in/fabiano-farias-de-lima-3527983a3" target="_blank" class="social-icon linkedin">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                         <a href="https://instagram.com/ffariasdl" target="_blank" class="social-icon instagram">
@@ -1003,6 +1054,9 @@
         </div>
     </footer>
 
+    <!-- Toast de notificação -->
+    <div id="toast" class="toast-notification">✨ Mensagem enviada com sucesso!</div>
+
     <script>
         // Scroll suave
         function scrollToSection(sectionId) {
@@ -1012,17 +1066,53 @@
             }
         }
 
-        // Newsletter handler
-        document.getElementById('newsletterForm')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('emailInput').value;
-            if(email && email.includes('@') && email.includes('.')) {
-                alert('✨ Inscrição confirmada! Você receberá conteúdos exclusivos.');
-                document.getElementById('emailInput').value = '';
-            } else {
-                alert('📧 Por favor, insira um e-mail válido.');
-            }
-        });
+        // Toast notification
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.background = isError 
+                ? 'linear-gradient(135deg, #ef4444, #dc2626)' 
+                : 'linear-gradient(135deg, var(--primary), var(--primary-dark))';
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // Formulário de contato com validação
+        const contactForm = document.getElementById('contactForm');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                const nome = document.getElementById('nomeInput')?.value.trim();
+                const email = document.getElementById('emailInput')?.value.trim();
+                const mensagem = document.getElementById('mensagemInput')?.value.trim();
+                
+                if (!nome) {
+                    e.preventDefault();
+                    showToast('❌ Por favor, informe seu nome', true);
+                    return false;
+                }
+                
+                if (!email || !email.includes('@') || !email.includes('.')) {
+                    e.preventDefault();
+                    showToast('❌ Por favor, insira um e-mail válido', true);
+                    return false;
+                }
+                
+                if (!mensagem) {
+                    e.preventDefault();
+                    showToast('❌ Por favor, digite sua mensagem', true);
+                    return false;
+                }
+                
+                // Se tudo estiver válido, o formulário será enviado para o FormSubmit
+                showToast('📨 Enviando mensagem...');
+                
+                // O formulário será enviado normalmente para o FormSubmit
+                // O retorno será tratado pelo FormSubmit
+            });
+        }
 
         // Banner Slider
         let currentSlide = 0;
@@ -1067,7 +1157,7 @@
             }
         });
         
-        // Binary rain effect otimizado
+        // Binary rain effect
         const canvas = document.getElementById('binary-canvas');
         if(canvas) {
             const ctx = canvas.getContext('2d');
@@ -1113,7 +1203,7 @@
             });
         }
         
-        // Floating particles melhorado
+        // Floating particles
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             if(!particlesContainer) return;
@@ -1163,7 +1253,7 @@
         window.addEventListener('scroll', updateActiveMenuItem);
         updateActiveMenuItem();
 
-        // Adicionar animação de entrada para os cards
+        // Animações de entrada
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
