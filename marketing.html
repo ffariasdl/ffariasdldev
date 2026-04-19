@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>NEO·DESIGN | Revolução Gráfica & Marketing Disruptivo</title>
-  <!-- Fonts & Smooth -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <meta name="description" content="Art·FFARIASDL — Design Gráfico + Marketing Disruptivo. Identidades visuais que dominam algoritmos e geram ROI exponencial.">
+  <title>Art·FFARIASDL | Revolução Gráfica & Marketing Disruptivo</title>
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -22,7 +23,6 @@
       scroll-behavior: smooth;
     }
 
-    /* Cores Vivas e Contrastes Explosivos: Neomagenta + Ciano Ácido + Violeta Glitch */
     :root {
       --neon-magenta: #ff00cc;
       --acid-cyan: #00f2ff;
@@ -30,39 +30,43 @@
       --dark-bg: #03000c;
       --glow-pink: #ff44cc;
       --electric-lime: #ccff00;
-      --glass-bg: rgba(10, 10, 25, 0.75);
+      --glass-bg: rgba(8, 6, 20, 0.75);
       --border-rad: 2rem;
     }
 
-    /* Glitch background effect */
+    /* fundo com partículas dinâmicas */
     .glitch-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 20% 30%, #0a0015, #000000);
+      background: radial-gradient(circle at 30% 20%, #0c0118, #000000);
       z-index: -2;
     }
 
-    .glitch-bg::before {
+    .glitch-bg::after {
       content: "";
       position: absolute;
-      width: 200%;
-      height: 200%;
-      top: -50%;
-      left: -50%;
-      background: repeating-linear-gradient(0deg, rgba(255,0,204,0.08) 0px, rgba(255,0,204,0.08) 2px, transparent 2px, transparent 8px);
-      animation: bgShift 12s linear infinite;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(45deg, rgba(255,0,204,0.03) 0px, rgba(255,0,204,0.03) 2px, transparent 2px, transparent 12px);
       pointer-events: none;
     }
 
-    @keyframes bgShift {
-      0% { transform: translate(0,0); opacity: 0.4;}
-      100% { transform: translate(20px, 30px); opacity: 0.7;}
+    /* grid de ruído sutil */
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-radial-gradient(circle at 20% 30%, rgba(0,0,0,0) 0px, rgba(0,0,0,0.2) 1px, transparent 2px);
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.25;
     }
 
-    /* container principal */
     .container {
       max-width: 1400px;
       margin: 0 auto;
@@ -71,9 +75,9 @@
       z-index: 2;
     }
 
-    /* header magnético */
+    /* hero magnético */
     .hero {
-      min-height: 90vh;
+      min-height: 88vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -82,42 +86,48 @@
     }
 
     .badge {
-      display: inline-block;
-      background: rgba(0, 242, 255, 0.2);
-      backdrop-filter: blur(8px);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 242, 255, 0.12);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--acid-cyan);
       border-radius: 60px;
-      padding: 0.5rem 1.2rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 1px;
+      padding: 0.55rem 1.4rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
       margin-bottom: 2rem;
       width: fit-content;
       color: var(--acid-cyan);
       text-transform: uppercase;
-      box-shadow: 0 0 8px rgba(0,242,255,0.4);
+      box-shadow: 0 0 12px rgba(0,242,255,0.3);
+      transition: 0.2s;
     }
 
     h1 {
-      font-size: clamp(2.8rem, 8vw, 5.5rem);
-      font-weight: 800;
-      line-height: 1.1;
-      background: linear-gradient(135deg, #ffffff, var(--neon-magenta), var(--acid-cyan));
+      font-size: clamp(3rem, 9vw, 6rem);
+      font-weight: 900;
+      line-height: 1.05;
+      background: linear-gradient(135deg, #ffffff, #ff66e0, var(--acid-cyan));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-shadow: 0 0 12px rgba(255,0,204,0.3);
-      margin-bottom: 1rem;
+      text-shadow: 0 0 18px rgba(255,0,204,0.4);
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.02em;
     }
 
     .hero-desc {
       font-size: 1.2rem;
-      max-width: 650px;
-      margin: 1.5rem 0 2rem;
-      color: #cdcdff;
+      max-width: 680px;
+      margin: 1.2rem 0 2rem;
+      color: #d9d9ff;
       border-left: 4px solid var(--neon-magenta);
-      padding-left: 1.5rem;
-      font-weight: 400;
+      padding-left: 1.6rem;
+      font-weight: 450;
+      backdrop-filter: blur(2px);
+      transition: opacity 0.3s ease;
     }
 
     .cta-group {
@@ -127,102 +137,109 @@
     }
 
     .btn-primary {
-      background: linear-gradient(95deg, var(--neon-magenta), var(--deep-violet));
+      background: linear-gradient(105deg, var(--neon-magenta), var(--deep-violet));
       border: none;
-      padding: 1rem 2.5rem;
+      padding: 1rem 2.6rem;
       border-radius: 60px;
       font-weight: 800;
       font-size: 1rem;
       color: white;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(255, 0, 204, 0.4);
-      letter-spacing: 0.5px;
+      transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 8px 22px rgba(255, 0, 204, 0.5);
+      letter-spacing: 0.3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.03) translateY(-3px);
+      box-shadow: 0 0 28px var(--neon-magenta);
+      background: linear-gradient(105deg, #ff44dd, #c22eff);
+    }
+
+    .btn-outline {
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      border: 1.8px solid var(--acid-cyan);
+      padding: 1rem 2.3rem;
+      border-radius: 60px;
+      font-weight: 700;
+      color: var(--acid-cyan);
+      transition: 0.2s;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 10px;
     }
 
-    .btn-primary:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px var(--neon-magenta);
-      background: linear-gradient(95deg, #ff33cc, #aa33ff);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--acid-cyan);
-      padding: 1rem 2.2rem;
-      border-radius: 60px;
-      font-weight: 700;
-      color: var(--acid-cyan);
-      backdrop-filter: blur(4px);
-      transition: 0.2s;
-      cursor: pointer;
-    }
-
     .btn-outline:hover {
       background: var(--acid-cyan);
       color: #000;
-      box-shadow: 0 0 20px var(--acid-cyan);
+      box-shadow: 0 0 22px var(--acid-cyan);
       border-color: var(--acid-cyan);
+      transform: translateY(-2px);
     }
 
-    /* cards marketing revolucionário */
     .section-title {
-      font-size: 2.8rem;
+      font-size: clamp(2rem, 6vw, 3rem);
       font-weight: 800;
       margin-bottom: 3rem;
       text-align: center;
-      background: linear-gradient(120deg, #fff, var(--acid-cyan));
+      background: linear-gradient(125deg, #fff, var(--acid-cyan), #ff99ff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      letter-spacing: -0.3px;
     }
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       margin: 3rem 0;
     }
 
     .marketing-card {
-      background: rgba(8, 6, 20, 0.65);
-      backdrop-filter: blur(12px);
-      border-radius: 2rem;
-      padding: 2rem 1.5rem;
+      background: rgba(10, 7, 25, 0.7);
+      backdrop-filter: blur(14px);
+      border-radius: 2.2rem;
+      padding: 2rem 1.6rem;
       border: 1px solid rgba(0, 242, 255, 0.25);
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.2);
       text-align: center;
+      transform-style: preserve-3d;
     }
 
     .marketing-card:hover {
-      transform: translateY(-12px);
+      transform: translateY(-12px) scale(1.01);
       border-color: var(--neon-magenta);
-      box-shadow: 0 25px 40px rgba(255, 0, 204, 0.2);
+      box-shadow: 0 28px 45px rgba(255, 0, 204, 0.25);
+      background: rgba(15, 10, 35, 0.85);
     }
 
     .card-icon {
-      font-size: 3rem;
-      background: linear-gradient(45deg, var(--neon-magenta), var(--acid-cyan));
+      font-size: 3.2rem;
+      background: linear-gradient(135deg, var(--neon-magenta), var(--acid-cyan));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.4rem;
     }
 
     .marketing-card h3 {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       margin-bottom: 1rem;
+      font-weight: 700;
     }
 
     .marketing-card p {
-      color: #bfbfef;
+      color: #cdcdf5;
       line-height: 1.5;
     }
 
-    /* PORTFOLIO disruptivo com morphing */
+    /* portfólio interativo com overlay futurista */
     .portfolio-showcase {
       display: flex;
       flex-wrap: wrap;
@@ -232,29 +249,51 @@
     }
 
     .work-item {
-      flex: 1 1 280px;
-      background: #0b0718;
+      flex: 1 1 270px;
+      background: #08051c;
       border-radius: 2rem;
       overflow: hidden;
-      transition: all 0.5s;
-      border: 1px solid #ff00cc30;
+      transition: all 0.4s;
+      border: 1px solid rgba(255, 0, 204, 0.3);
       cursor: pointer;
       position: relative;
     }
 
+    .work-item::after {
+      content: "⤴ EXPLORAR";
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--acid-cyan);
+      opacity: 0;
+      transition: 0.2s;
+      pointer-events: none;
+    }
+
+    .work-item:hover::after {
+      opacity: 1;
+      transform: translateX(-5px);
+    }
+
     .work-img {
       height: 260px;
-      background: linear-gradient(135deg, #1f1b3a, #050017);
+      background: linear-gradient(145deg, #211b42, #030018);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 4rem;
-      transition: 0.4s;
+      transition: 0.35s;
     }
 
     .work-item:hover .work-img {
-      filter: hue-rotate(10deg) brightness(1.2);
-      background: linear-gradient(45deg, #2a1e55, #ff00aa20);
+      filter: hue-rotate(8deg) brightness(1.15);
+      background: linear-gradient(125deg, #3a2a70, #a020f0);
     }
 
     .work-info {
@@ -263,20 +302,21 @@
 
     .work-info h4 {
       font-size: 1.4rem;
+      font-weight: 700;
     }
 
-    /* stats dynamic */
+    /* stats premium */
     .stats-banner {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 2rem;
-      background: linear-gradient(115deg, rgba(255,0,204,0.15), rgba(0,242,255,0.1));
-      backdrop-filter: blur(16px);
+      background: linear-gradient(125deg, rgba(255,0,204,0.18), rgba(0,242,255,0.08));
+      backdrop-filter: blur(18px);
       border-radius: 3rem;
-      padding: 2rem 3rem;
+      padding: 2.5rem 3rem;
       margin: 5rem 0;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.18);
     }
 
     .stat {
@@ -285,92 +325,103 @@
     }
 
     .stat-number {
-      font-size: 3rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--acid-cyan), white);
+      font-size: 3.2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--acid-cyan), #fff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      letter-spacing: -1px;
     }
 
-    /* formulário magnético */
+    /* formulário upgrade */
     .form-section {
-      background: radial-gradient(ellipse at 30% 40%, #120b2a, #010001);
+      background: radial-gradient(ellipse at 70% 20%, #180e2f, #010001);
       border-radius: 3rem;
       padding: 3rem;
       margin: 4rem 0;
       border: 1px solid var(--neon-magenta);
-      box-shadow: 0 0 35px rgba(255,0,204,0.2);
+      box-shadow: 0 0 45px rgba(255,0,204,0.25);
+      transition: all 0.3s;
     }
 
     .form-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 2rem;
+      gap: 2.5rem;
       justify-content: space-between;
       align-items: center;
     }
 
     .form-text {
-      flex: 1;
+      flex: 1.2;
     }
 
     .form-text h2 {
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       margin-bottom: 1rem;
+      font-weight: 800;
     }
 
     .input-group {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.2rem;
     }
 
     .input-group input, .input-group textarea {
-      background: rgba(0,0,0,0.6);
-      border: 1px solid #ff44cc70;
-      padding: 1rem;
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 68, 204, 0.6);
+      padding: 1rem 1.2rem;
       border-radius: 2rem;
       color: white;
       font-size: 1rem;
       outline: none;
       transition: 0.2s;
+      font-family: 'Inter', sans-serif;
     }
 
     .input-group input:focus, .input-group textarea:focus {
       border-color: var(--acid-cyan);
-      box-shadow: 0 0 12px var(--acid-cyan);
+      box-shadow: 0 0 15px var(--acid-cyan);
+      background: #030018;
     }
 
     .btn-submit {
-      background: var(--neon-magenta);
+      background: linear-gradient(95deg, var(--neon-magenta), #b800ff);
       border: none;
       padding: 1rem;
       border-radius: 3rem;
-      font-weight: bold;
+      font-weight: 800;
       color: white;
       cursor: pointer;
-      transition: 0.3s;
+      transition: 0.25s;
+      font-size: 1rem;
+    }
+
+    .btn-submit:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px #ff00cc;
     }
 
     footer {
       text-align: center;
       padding: 2rem 0;
       border-top: 1px solid rgba(0,242,255,0.3);
-      margin-top: 3rem;
+      margin-top: 2rem;
+      font-size: 0.85rem;
     }
 
-    /* scrollbar foda */
     ::-webkit-scrollbar {
-      width: 6px;
+      width: 5px;
     }
     ::-webkit-scrollbar-track {
-      background: #000;
+      background: #050008;
     }
     ::-webkit-scrollbar-thumb {
       background: var(--neon-magenta);
-      border-radius: 10px;
+      border-radius: 12px;
     }
 
     @media (max-width: 780px) {
@@ -384,17 +435,21 @@
       .form-grid {
         flex-direction: column;
       }
+      .hero-desc {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 <div class="glitch-bg"></div>
+<div class="noise-overlay"></div>
 
 <div class="container">
-  <!-- HERO: impacto máximo + marketing de conversão -->
+  <!-- HERO: intenso + marketing de conversão -->
   <div class="hero">
     <div class="badge">
-      <i class="fas fa-bolt"></i> DISRUPTIVE MARKETING EDITION
+      <i class="fas fa-bolt"></i> DISRUPTIVE MARKETING EDITION // ALTA CONVERSÃO
     </div>
     <h1>DESIGN QUE VENDE.<br>IDENTIDADE QUE EXPLODE.</h1>
     <div class="hero-desc">
@@ -406,7 +461,7 @@
     </div>
   </div>
 
-  <!-- CARDS DE MARKETING VIRAL -->
+  <!-- CARDS DE ESTRATÉGIA -->
   <div>
     <h2 class="section-title">⚡ Estratégias que quebram o mercado ⚡</h2>
     <div class="cards-grid">
@@ -428,7 +483,7 @@
     </div>
   </div>
 
-  <!-- PORTFOLIO REVOLUCIONÁRIO (simulação de projetos) -->
+  <!-- PORTFOLIO DINÂMICO -->
   <div>
     <h2 class="section-title">🔥 Criações que incendiaram marcas 🔥</h2>
     <div class="portfolio-showcase" id="portfolioGrid">
@@ -451,20 +506,20 @@
     </div>
   </div>
 
-  <!-- STATS COM MARKETING AGGRESSIVO -->
+  <!-- STATS COM COUNTERS PREMIUM -->
   <div class="stats-banner">
     <div class="stat"><div class="stat-number" id="statClients">0+</div><div>CLIENTES IMPACTADOS</div></div>
     <div class="stat"><div class="stat-number" id="statRevenue">0%</div><div>AUMENTO MÉDIO EM VENDAS</div></div>
     <div class="stat"><div class="stat-number" id="statProjects">0+</div><div>PROJETOS ENTREGUES</div></div>
   </div>
 
-  <!-- FORMULÁRIO DE CAPTURA ALTA CONVERSÃO -->
+  <!-- FORMULÁRIO DE ALTA CONVERSÃO -->
   <div class="form-section" id="formSection">
     <div class="form-grid">
       <div class="form-text">
         <h2><i class="fas fa-charging-station"></i> QUER DESTRUIR CONCORRENTES?</h2>
         <p>Preencha e receba um diagnóstico visual + estratégia de marketing de impacto. Vamos revolucionar sua marca juntos.</p>
-        <ul style="margin-top: 1rem; list-style: none;">
+        <ul style="margin-top: 1.2rem; list-style: none; line-height: 1.8;">
           <li>✅ Proposta personalizada em 24h</li>
           <li>✅ Análise de concorrência com IA</li>
           <li>✅ Bônus: E-book "Design Hyperformance"</li>
@@ -475,25 +530,25 @@
         <input type="email" id="leadEmail" placeholder="E-mail profissional *">
         <textarea rows="2" id="leadMsg" placeholder="Conte um pouco sobre seu projeto..."></textarea>
         <button class="btn-submit" id="submitLeadBtn"><i class="fas fa-paper-plane"></i> ACIONAR MARKETING REVOLUCIONÁRIO</button>
-        <div id="formFeedback" style="font-size: 0.85rem; text-align: center; color: #ccff00;"></div>
+        <div id="formFeedback" style="font-size: 0.85rem; text-align: center; font-weight: 500;"></div>
       </div>
     </div>
   </div>
 
   <footer>
-    <p>© 2025 NEO·DESIGN | Design Gráfico + Marketing Alquímico — disruptivo, imersivo, revolucionário.</p>
-    <div style="margin-top: 1rem;">
-      <i class="fab fa-instagram"></i> @neodesign  |  <i class="fab fa-behance"></i> /neorevolution  |  <i class="fab fa-tiktok"></i> @designviral
+    <p>© 2025 Art·FFARIASDL | Design Gráfico + Marketing Alquímico — disruptivo, imersivo, revolucionário.</p>
+    <div style="margin-top: 0.8rem; letter-spacing: 0.5px;">
+      <i class="fab fa-instagram"></i> @art_ffariasdl &nbsp;&nbsp;|&nbsp;&nbsp; <i class="fab fa-tiktok"></i> @ffariasdl
     </div>
   </footer>
 </div>
 
 <script>
-  // ANIMAÇÕES DE CONTAGEM (efeito marketing)
+  // ANIMAÇÃO DE CONTAGEM COM EASING
   const counters = [
-    { id: 'statClients', target: 487, suffix: '+', isPercent: false },
-    { id: 'statRevenue', target: 312, suffix: '%', isPercent: true },
-    { id: 'statProjects', target: 1240, suffix: '+', isPercent: false }
+    { id: 'statClients', target: 512, suffix: '+', isPercent: false },
+    { id: 'statRevenue', target: 327, suffix: '%', isPercent: true },
+    { id: 'statProjects', target: 1280, suffix: '+', isPercent: false }
   ];
 
   function animateNumbers() {
@@ -501,24 +556,26 @@
       const el = document.getElementById(counter.id);
       if (!el) return;
       let current = 0;
-      const increment = Math.ceil(counter.target / 50);
-      const update = () => {
+      const duration = 1800;
+      const stepTime = 25;
+      const steps = duration / stepTime;
+      const increment = counter.target / steps;
+      let step = 0;
+      const interval = setInterval(() => {
+        step++;
         current += increment;
-        if (current >= counter.target) {
+        if (step >= steps) {
           el.innerText = counter.target + counter.suffix;
-          return;
+          clearInterval(interval);
+        } else {
+          el.innerText = Math.floor(current) + counter.suffix;
         }
-        el.innerText = current + counter.suffix;
-        requestAnimationFrame(update);
-      };
-      update();
+      }, stepTime);
     });
   }
 
-  // Scroll reveal para ativar contagem quando stats aparecerem
   const statsSection = document.querySelector('.stats-banner');
   let animated = false;
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting && !animated) {
@@ -526,33 +583,36 @@
         animateNumbers();
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.3, rootMargin: "0px 0px -40px 0px" });
   if(statsSection) observer.observe(statsSection);
 
-  // Scroll suave para formulário e alertas interativos
+  // SCROLL SMOOTH + FEEDBACK
   document.getElementById('scrollToFormBtn')?.addEventListener('click', () => {
-    document.getElementById('formSection')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    // feedback de gamificação
+    const form = document.getElementById('formSection');
+    form?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     const btn = document.getElementById('scrollToFormBtn');
-    btn.style.transform = 'scale(0.98)';
+    btn.style.transform = 'scale(0.96)';
     setTimeout(() => btn.style.transform = '', 200);
+    // efeito sônico
+    const feedbackDiv = document.getElementById('formFeedback');
+    if(feedbackDiv) feedbackDiv.innerHTML = '⚡⚡ RADICALIZE SUA MARCA AGORA ⚡⚡';
+    setTimeout(() => { if(feedbackDiv && feedbackDiv.innerHTML.includes('RADICALIZE')) feedbackDiv.innerHTML = ''; }, 1800);
   });
 
   document.getElementById('exploreWorkBtn')?.addEventListener('click', () => {
     const portfolio = document.getElementById('portfolioGrid');
     portfolio?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // efeito surpresa: mudar ícones temporariamente
-    const workImgs = document.querySelectorAll('.work-img i');
-    workImgs.forEach((icon, idx) => {
-      const originalClass = icon.className;
+    const icons = document.querySelectorAll('.work-img i');
+    icons.forEach((icon, idx) => {
+      const original = icon.className;
       setTimeout(() => {
-        icon.className = 'fas fa-star-of-life';
-        setTimeout(() => icon.className = originalClass, 600);
-      }, idx * 100);
+        icon.className = 'fas fa-star-of-life fa-fw';
+        setTimeout(() => icon.className = original, 550);
+      }, idx * 90);
     });
   });
 
-  // Formulário de captura com mensagem personalizada + marketing simulation
+  // FORMULARIO COM SIMULAÇÃO DE ENVIO AVANÇADO
   const submitBtn = document.getElementById('submitLeadBtn');
   const feedbackDiv = document.getElementById('formFeedback');
 
@@ -567,13 +627,12 @@
       setTimeout(() => feedbackDiv.innerHTML = '', 3000);
       return;
     }
-    if (!email.includes('@')) {
+    if (!email.includes('@') || !email.includes('.')) {
       feedbackDiv.innerHTML = '📧 E-mail inválido — queremos te entregar insights exclusivos!';
       setTimeout(() => feedbackDiv.innerHTML = '', 2500);
       return;
     }
 
-    // Simulação de envio com efeito high-tech
     feedbackDiv.innerHTML = '🚀 ENVIANDO PARA O MOTOR DE MARKETING QUÂNTICO...';
     feedbackDiv.style.color = '#00f2ff';
     submitBtn.disabled = true;
@@ -587,32 +646,34 @@
       document.getElementById('leadMsg').value = '';
       submitBtn.disabled = false;
       submitBtn.style.opacity = '1';
-      setTimeout(() => feedbackDiv.innerHTML = '', 5000);
-    }, 1200);
+      setTimeout(() => feedbackDiv.innerHTML = '', 5500);
+    }, 1300);
   });
 
-  // Efeito parallax/hover glitch nos cards de marketing (estilo)
+  // Efeito 3D tilt nos cards
   const cards = document.querySelectorAll('.marketing-card');
   cards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      card.style.transform = `perspective(800px) rotateX(${(y - rect.height/2)/30}deg) rotateY(${(x - rect.width/2)/30}deg) translateY(-6px)`;
+      const rotateX = ((y - rect.height/2) / 28);
+      const rotateY = ((x - rect.width/2) / 28);
+      card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
     });
     card.addEventListener('mouseleave', () => {
-      card.style.transform = 'translateY(0px) rotateX(0deg) rotateY(0deg)';
+      card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px)';
     });
   });
 
-  // Texto dinâmico no hero: marketing copywriting rotating effect (pequeno detalhe)
+  // COPYWRITING ROTATIVO COM MAIS ENERGIA
   const heroDesc = document.querySelector('.hero-desc');
   if(heroDesc) {
-    const originalText = heroDesc.innerHTML;
     const variations = [
       'Design Gráfico + Estratégias de Marketing de Alta Conversão. Criamos ativos visuais que dominam algoritmos e transformam marcas em ícones de cultura digital.',
       '✨ Identidades que geram hype. Campanhas com ROI exponencial. Revolucione a percepção da sua marca agora. ✨',
-      '🧠 Neurodesign + Growth Hacking Visual: o que sua audiência realmente deseja, entregue com explosão criativa.'
+      '🧠 Neurodesign + Growth Hacking Visual: o que sua audiência realmente deseja, entregue com explosão criativa.',
+      '🔥 Design que vende na velocidade da cultura: motion, branding e dados para dominar o mercado.'
     ];
     let idx = 0;
     setInterval(() => {
@@ -622,30 +683,37 @@
         heroDesc.innerHTML = variations[idx];
         heroDesc.style.opacity = '1';
       }, 200);
-    }, 5000);
+    }, 5200);
   }
 
-  // Pequeno glitch no título ao carregar
-  const title = document.querySelector('h1');
-  if(title) {
-    title.addEventListener('mouseenter', () => {
-      title.style.textShadow = '0 0 20px #ff00cc, 0 0 8px #00f2ff';
+  // GLITCH NO TÍTULO E PEQUENO EFEITO DE PISCAR
+  const glitchTitle = document.querySelector('h1');
+  if(glitchTitle) {
+    glitchTitle.addEventListener('mouseenter', () => {
+      glitchTitle.style.textShadow = '0 0 8px #ff00cc, 0 0 18px #00f2ff';
+      glitchTitle.style.transition = '0.1s';
     });
-    title.addEventListener('mouseleave', () => {
-      title.style.textShadow = '0 0 12px rgba(255,0,204,0.3)';
+    glitchTitle.addEventListener('mouseleave', () => {
+      glitchTitle.style.textShadow = '0 0 12px rgba(255,0,204,0.3)';
     });
   }
 
-  // Ativar números fallback caso já esteja visível
-  if(window.IntersectionObserver && statsSection && statsSection.getBoundingClientRect().top < window.innerHeight-100) {
-    if(!animated) {
-      animated = true;
-      animateNumbers();
-    }
+  // caso stats já estejam visíveis
+  if(statsSection && statsSection.getBoundingClientRect().top < window.innerHeight - 80 && !animated) {
+    animated = true;
+    animateNumbers();
   }
-  
-  // console criativo sem poluição
-  console.log("%c🔥 NEO·DESIGN | O futuro do design gráfico + marketing disruptivo", "color: #ff00cc; font-size: 16px; font-weight: bold;");
+
+  // efeito de digitação futuristico nos badges (opcional)
+  const badge = document.querySelector('.badge');
+  if(badge) {
+    setInterval(() => {
+      badge.style.borderColor = '#ff66ff';
+      setTimeout(() => badge.style.borderColor = 'var(--acid-cyan)', 300);
+    }, 2000);
+  }
+
+  console.log("%c🔥 Art·FFARIASDL | Design + Marketing disruptivo — o amanhã é agora.", "color: #ff00cc; font-size: 14px; font-weight: bold;");
 </script>
 </body>
 </html>
